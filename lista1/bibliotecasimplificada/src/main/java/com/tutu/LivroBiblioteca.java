@@ -59,7 +59,7 @@ public class LivroBiblioteca {
         System.out.println("Autor: " + autor);
         System.out.println("Código: " + codigo);
         if (disponivel == true){
-           System.out.println("Situação: Dispoível para empréstimo."); 
+           System.out.println("Situação: Disponível para empréstimo."); 
         }
         else {
             System.out.println("Situação: Indisponível para empréstimo no momento.");

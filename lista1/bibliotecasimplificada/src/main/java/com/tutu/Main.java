@@ -64,7 +64,7 @@ public class Main {
                 String disponibilidade = leitor.next();
                 if (disponibilidade.equals(livro1.getCodigo())){
                      if (livro1.getDisponivel() == true){
-                        System.out.println("Situação: Dispoível para empréstimo."); 
+                        System.out.println("Situação: Disponível para empréstimo."); 
                     }
                     else {
                         System.out.println("Situação: Indisponível para empréstimo no momento.");
@@ -72,7 +72,7 @@ public class Main {
                 }
                 else if (disponibilidade.equals(livro2.getCodigo())){
                      if (livro2.getDisponivel() == true){
-                        System.out.println("Situação: Dispoível para empréstimo."); 
+                        System.out.println("Situação: Disponível para empréstimo."); 
                     }
                     else {
                         System.out.println("Situação: Indisponível para empréstimo no momento.");
@@ -80,7 +80,7 @@ public class Main {
                 }
                 else if (disponibilidade.equals(livro3.getCodigo())) {
                      if (livro3.getDisponivel() == true){
-                        System.out.println("Situação: Dispoível para empréstimo."); 
+                        System.out.println("Situação: Disponível para empréstimo."); 
                     }
                     else {
                         System.out.println("Situação: Indisponível para empréstimo no momento.");
