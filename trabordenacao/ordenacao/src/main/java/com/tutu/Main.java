@@ -9,4 +9,5 @@ public class Main {
         Vetor v1 = new Vetor(numeros);
         v1.ordena();
         v1.exibirVetor();  
+    }
 }
