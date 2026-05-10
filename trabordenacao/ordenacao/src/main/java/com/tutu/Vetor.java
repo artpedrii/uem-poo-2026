@@ -1,7 +1,7 @@
 package com.tutu;
 
 public class Vetor {
-    private int[] elementos;
+    private List elementos;
 
     //construtor
     public Vetor(int[] elementos) {
