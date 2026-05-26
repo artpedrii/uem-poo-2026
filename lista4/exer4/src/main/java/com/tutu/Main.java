@@ -11,8 +11,6 @@ public class Main {
         biblioteca.emprestar(aluno1, livro1); 
         biblioteca.emprestar(aluno1, livro2); 
         biblioteca.emprestar(aluno2, livro1); 
-        biblioteca.emprestar(aluno1, livro1);  
-
-        //TESTE TESTE TESTE
+        biblioteca.emprestar(aluno1, livro1);
     }
 }
