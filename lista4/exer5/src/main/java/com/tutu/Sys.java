@@ -7,5 +7,8 @@ public class Sys {
             System.out.println("Tarefa concluída com sucesso.");
             tarefaTemp.setStatusAtual(StatusTarefa.CONCLUIDA);
         }
+        else {
+            System.out.println("Tarefa não pode ser entregue. Status atual: " + tarefaTemp.getStatusAtual());
+        }
     }
 }
