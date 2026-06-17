@@ -18,9 +18,7 @@ public class PedidoService {
         return pedidoRepository.findAll();
     }
 
-    //public Pedido inserirPedido(){
-
-    //}
-
-    
+    public Pedido inserirPedido(Pedido pedido){
+        return pedidoRepository.save(pedido);
+    }
 }
