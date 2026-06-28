@@ -1,0 +1,6 @@
+1 - A classe que representa entidade são as classes Produto e Orcamento.
+2 - OrcamentoController e ProdutoController.
+3 - ProdutoService e OrcamentoService.
+4 - ProdutoRepository e OrcamentoRepository.
+5 - POST / orcamento.
+6 - GET / produtos
