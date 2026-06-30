@@ -1,5 +1,7 @@
 package com.example.crudproject.model;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +27,10 @@ public class Produto {
 
     public double getPreco() {
         return preco;
+    }
+
+    public void setId(Long id){
+        this.id = id;
     }
 
     @Override

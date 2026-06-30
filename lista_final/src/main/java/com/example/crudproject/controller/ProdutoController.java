@@ -23,4 +23,26 @@ public class ProdutoController {
     public Produto createProduct(@RequestBody Produto produto) {
         return produtoService.save(produto);
     }
+
+    @GetMapping("/{id}")
+    public Produto buscarById(@PathVariable Long id) {
+        return produtoService.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Produto colocar(@PathVariable Long id, @RequestBody Produto produto){
+        Produto produtoExistente = produtoService.findById(id);
+        if (produtoExistente != null){
+            produto.setId(id);
+            return produtoService.save(produto);
+        }
+        else {
+            return null;
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id){
+       produtoService.deleteById(id);
+    }
 }

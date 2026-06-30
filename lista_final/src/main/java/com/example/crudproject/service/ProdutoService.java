@@ -1,5 +1,6 @@
 package com.example.crudproject.service;
 
+import com.example.crudproject.exception.PrecoInvalidoException;
 import com.example.crudproject.model.Produto;
 import com.example.crudproject.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,12 @@ public class ProdutoService {
     }
 
     public Produto save(Produto product) {
-        return productRepository.save(product);
+        if (product.getPreco() <= 0){
+            throw new PrecoInvalidoException("O preço do produto deve ser maior que zero!");
+        }
+        else {
+            return productRepository.save(product);
+        }
     }
 
     public void deleteById(Long id) {
