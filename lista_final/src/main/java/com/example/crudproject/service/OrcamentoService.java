@@ -1,46 +1,35 @@
 package com.example.crudproject.service;
 
+import com.example.crudproject.exception.ValidacaoException;
 import com.example.crudproject.model.Orcamento;
+import com.example.crudproject.model.StatusOrcamento;
 import com.example.crudproject.repository.OrcamentoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrcamentoService {
+    private final OrcamentoRepository repository;
 
-    @Autowired
-    private OrcamentoRepository orcamentoRepository;
-
-    public Orcamento insertOrcamento(Orcamento orcamento){
-        return orcamentoRepository.save(orcamento);
+    public OrcamentoService(OrcamentoRepository repository) { this.repository = repository; }
+    public List<Orcamento> buscarTodos() { return repository.findAll(); }
+    public Orcamento buscarPorId(Integer id) {
+        return repository.findById(id).orElseThrow(() -> new ValidacaoException("Orçamento não encontrado"));
     }
-
-    public List<Orcamento> selectAllOrcamento(){
-        return orcamentoRepository.findAll();
+    public List<Orcamento> buscarPorStatus(StatusOrcamento status) { return repository.findByStatus(status); }
+    public Orcamento salvar(Orcamento orcamento) {
+        orcamento.calcularValorTotal();
+        return repository.save(orcamento);
     }
-
-    // select * from orcamento where "id"=id
-    public Orcamento selectOrcamentoById(int id){
-        Optional<Orcamento> oc = orcamentoRepository.findById(id);
-        if(oc.isPresent()){
-            return oc.get();
-        }else{
-            throw new RuntimeException("Orcamento nao encotrado.");
-        }
+    public void deletar(Integer id) { repository.deleteById(id); }
+    public Orcamento aprovarOrcamento(Integer id) {
+        Orcamento orcamento = buscarPorId(id);
+        orcamento.aprovar();
+        return repository.save(orcamento);
     }
-
-    // status Pendente -> Aprovado
-
-    public Orcamento aprovarOrcamento(int id){
-        Orcamento oc = selectOrcamentoById(id);
-        oc.setStatus("Aprovado");
-        return orcamentoRepository.save(oc);
-    }
-
-    public void deletarOrcamento(int id){
-        orcamentoRepository.deleteById(id);
+    public Orcamento rejeitarOrcamento(Integer id) {
+        Orcamento orcamento = buscarPorId(id);
+        orcamento.rejeitar();
+        return repository.save(orcamento);
     }
 }
